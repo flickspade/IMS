@@ -1,0 +1,127 @@
+﻿@model InventoryManagementSystem.Models.user
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="~/css/DashShared.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text">N.S Traders</div>
+        <ul>
+            <li class="active"><a href="#">Dashboard</a></li>
+            <li> <a href="#">Summary </a></li>
+            <li>
+                <a href="#" class="feat-btn">
+                    Sales
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="feat-show">
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="#">Elements</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="serv-btn">
+                    Purchase
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="serv-show">
+                    <li><a href="#">New Purchase</a></li>
+                    <li><a href="#">Return Purchase</a></li>
+                    <li><a href="#">Purchase Info</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="serv-btn1">
+                    Product
+                    <span class="fas fa-caret-down third"></span>
+                </a>
+                <ul class="serv-show2">
+                    <li><a href="#">Purchase</a></li>
+                    <li><a href="#">Return Purchase</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="serv-btn2">
+                    Customer
+                    <span class="fas fa-caret-down forth"></span>
+                </a>
+                <ul class="serv-show3">
+                    <li><a href="#">App Design</a></li>
+                    <li><a href="#">Web Design</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="serv-btn3">
+                    Supplier
+                    <span class="fas fa-caret-down fifth"></span>
+                </a>
+                <ul class="serv-show4">
+                    <li><a href="#">App Design</a></li>
+                    <li><a href="#">Web Design</a></li>
+                </ul>
+            </li>
+            @if (User.IsInRole("Admin"))
+            {
+        <li><a href="~/Account/Signup">Register Employee</a></li>
+            }
+            <li><a href="@Url.Action("Logout","Account")">Logout</a></li>
+        </ul>
+    </nav>
+    @*<div class="content">
+        <div class="header">Sidebar Menu with sub-menu</div>
+        <p>HTML CSS & Javascript (Full Tutorial)</p>
+    </div>*@
+
+    <script>
+        $('.btn').click(function () {
+            $(this).toggleClass("click");
+            $('.sidebar').toggleClass("show");
+        });
+        $('.feat-btn').click(function () {
+            $('nav ul .feat-show').toggleClass("show");
+            $('nav ul .first').toggleClass("rotate");
+        });
+        $('.serv-btn').click(function () {
+            $('nav ul .serv-show').toggleClass("show1");
+            $('nav ul .second').toggleClass("rotate");
+        });
+        $('.serv-btn1').click(function () {
+            $('nav ul .serv-show2').toggleClass("show2");
+            $('nav ul .third').toggleClass("rotate");
+        });
+        $('.serv-btn2').click(function () {
+            $('nav ul .serv-show3').toggleClass("show3");
+            $('nav ul .forth').toggleClass("rotate");
+        });
+        $('.serv-btn3').click(function () {
+            $('nav ul .serv-show4').toggleClass("show4");
+            $('nav ul .fifth').toggleClass("rotate");
+        });
+        $('nav ul li').click(function () {
+            $(this).addClass("active").siblings().removeClass("active");
+        });
+       
+    </script>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - By N.S TRADERS</p>
+    </footer>
+
+</body>
+
+</html>
